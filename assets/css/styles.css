@@ -9,7 +9,7 @@
 body {
   font-family: 'Lato', arial, sans-serif;
   color: #434343;
-  background: #DAE3E7;
+  background: #FFFFFF;
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -135,6 +135,7 @@ a.dotted-link:hover {
 
 .header .profile-image {
   margin-right: 30px;
+  margin-top: 30px;
 }
 
 .header .profile-content .name {
@@ -671,4 +672,12 @@ a.dotted-link:hover {
     width: 1360px;
     max-width: inherit;
   }
+}
+
+#btn-social-item {
+    background: #2D3E51;
+    display: inline;
+    position: relative;
+    top: -3px; 
+    border-color: #2D3E51;
 }
