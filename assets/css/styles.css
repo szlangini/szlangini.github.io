@@ -22,7 +22,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 a {
-  color: #3AAA64;
+  color: #2D3E51;
   -webkit-transition: all 0.4s ease-in-out;
   -moz-transition: all 0.4s ease-in-out;
   -ms-transition: all 0.4s ease-in-out;
@@ -32,7 +32,7 @@ a {
 a:hover {
   text-decoration: underline;
   color: #5f6b77;
-  color: #2d844e;
+  color: #2D3E51;
 }
 
 a:focus {
@@ -136,6 +136,8 @@ a.dotted-link:hover {
 .header .profile-image {
   margin-right: 30px;
   margin-top: 30px;
+  height: 180px;
+  width: 180px;
 }
 
 .header .profile-content .name {
@@ -680,4 +682,15 @@ a.dotted-link:hover {
     position: relative;
     top: -3px; 
     border-color: #2D3E51;
+}
+
+.btn-primary{
+    background: #2D3E51;
+	border-color: #2D3E51; 
+	
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+    color: #fff;
+    background-color: #537495;
+    border-color: #537495; /*set the color you want here*/
 }
