@@ -141,7 +141,7 @@ a.dotted-link:hover {
 }
 
 .header .profile-content .name {
-  color: #49515a;
+  color: #2D3E52;
   font-size: 38px;
   margin-bottom: 5px;
   margin-top: 30px;
@@ -693,4 +693,58 @@ a.dotted-link:hover {
     color: #fff;
     background-color: #537495;
     border-color: #537495; /*set the color you want here*/
+}
+
+#languages img{
+	width: 24px;
+	position: relative;
+	top: -2px;
+}
+
+.s_proficient{
+	margin-bottom: 20px;
+	font-weight: bolder;
+	color: #2D3E51;
+}
+
+.s_experienced{
+	margin-bottom: 20px;
+	color: #616C79;
+
+}
+
+.s_familiar{
+	margin-bottom: 20px;
+	color: #A5ACB3;
+
+}
+
+.s_list li{
+	margin-bottom: 0px;
+	padding-left: 1em;
+  	text-indent: -3ch;
+}
+
+.s_list li:before {
+	content: "</>";
+	padding-right: 5px;
+}
+
+.s_list{
+	list-style: none;
+	margin-left: 0px;
+	padding-left: 0px;
+	
+}
+
+#special-heading{
+	color: #2D3E52;
+}
+
+.project-images img{
+	height: 320px;
+	margin: 5px;
+	margin-bottom: 10px;
+	border: solid;
+	border-color: #2D3E52;
 }
