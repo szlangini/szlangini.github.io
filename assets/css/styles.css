@@ -742,9 +742,13 @@ a.dotted-link:hover {
 }
 
 .project-images img{
-	height: 320px;
+	height: 450px;
 	margin: 5px;
 	margin-bottom: 10px;
 	border: solid;
 	border-color: #2D3E52;
+}
+
+#planb img{
+	height: 350px
 }
