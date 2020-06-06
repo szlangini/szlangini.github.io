@@ -19,8 +19,9 @@ jQuery(document).ready(function($) {
     return this.outerHTML
     }).get().join('');
     
-    var longText = '<p>As a student of Information Systems Management I am particularly fascinated by data. From collecting, cleansing and integration to analysis. </p> <p>When I lacked the money to technically implement a mobile app for social networking, I taught myself to program. At that time I was still studying management at the University of St.Gallen.In the meantime the adventure became a passion. I am currently working as a freelance Mobile Developer.</p><p>Last year I found another passion in Data Science. I am stunned by theopportunities that this world is offering us. I am particularly     interested in machine learning.At the moment I am looking for further education or learning opportunities in exactly this area.</p><p>You can meet me at the Rotaract Club Berlin International, where I am serving as president this year.We organize weekly meetings with up to 40 people on different topics. We plan social projects, educate ourselves further and enjoy the time.</p><p>When I\'m not working on IT projects or Rotaract, you can find me playing the guitar or the MIDI keyboard.I am very interested in music (production), tennis and comedy.</p><button class="btn btn-primary mycolordark" id="aboutmelong">Less ...</button>'
+    var longText = '<p>As a student of Information Systems Management I am particularly fascinated by data. From collecting, cleansing and integration to analysis. </p> <p>When I lacked the money to technically implement a mobile app for social networking, I taught myself to program. At that time I was still studying management at the University of St.Gallen.In the meantime the adventure became a passion. I am currently working as a freelance Mobile Developer.</p><p>Last year I found another passion in Data Science. I am stunned by the opportunities this world is offering us. I am particularly interested in machine learning. At the moment I am looking for further education or learning opportunities in exactly this area.</p><p>You can meet me at the Rotaract Club Berlin International, where I am serving as president this year. We organize weekly meetings with up to 42 people on different topics. We plan social projects and further educate ourselves.</p><p>When I\'m not working on IT projects or Rotaract, you can find me playing the guitar or the MIDI keyboard.I am very interested in music (production), tennis and comedy.</p><button class="btn btn-primary mycolordark" id="aboutmelong">Less ...</button>'
 
+	
 
     /*======= Skillset *=======*/
     
@@ -78,6 +79,12 @@ jQuery(document).ready(function($) {
     });
 	$(document).on('click','#aboutmelong',function(){
         $('#aboutme').html(shortText);
+	}); 
+	
+
+	$(document).on('click','.contactme',function(){
+		var email = 'vincent.szlang@googlemail.com';
+    	window.location = 'mailto:' + email;
 	}); 
     
     
