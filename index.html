@@ -1,0 +1,844 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Jan Vincent Szlang — University of Cambridge</title>
+<meta name="description" content="PhD student at the University of Cambridge working on workload intelligence for analytical data processing systems." />
+
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    /* Cool paper — neutral, slight blue undertone */
+    --bg:      #F6F6F4;
+    --bg-2:    #EFEFEC;
+    --paper:   #FFFFFF;
+    --ink:     #0B0F17;
+    --ink-2:   #3A4253;
+    --ink-3:   #6E7585;
+    --rule:    #E3E3DF;
+    --rule-2:  #D2D2CC;
+
+    --accent:    #E5462C;   /* vermilion */
+    --accent-2:  #FFE5DE;   /* tint */
+    --navy:      #11224E;   /* deep navy for hover */
+
+    --sans: "Geist", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    --mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+    --maxw: 1180px;
+    --gutter: clamp(1.25rem, 4vw, 3rem);
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    font-weight: 400;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  ::selection { background: var(--accent); color: #fff; }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule-2);
+    padding-bottom: 1px;
+    transition: color 120ms ease, border-color 120ms ease, background-color 120ms ease;
+  }
+  a:hover, a:focus-visible {
+    color: var(--navy);
+    border-bottom-color: var(--navy);
+  }
+  a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+  .accent-link {
+    border-bottom-color: var(--accent);
+    color: var(--ink);
+  }
+  .accent-link:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+  /* ---------- Top bar ---------- */
+  .topbar {
+    border-bottom: 1px solid var(--rule);
+    background: var(--bg);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: saturate(140%) blur(6px);
+  }
+  .topbar-inner {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0.85rem var(--gutter);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.02em;
+  }
+  .topbar-mark {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    border: 0;
+    padding: 0;
+    color: var(--ink);
+  }
+  .topbar-mark .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--accent);
+    display: inline-block;
+  }
+  .topbar nav {
+    display: flex;
+    gap: 1.4rem;
+  }
+  .topbar nav a {
+    color: var(--ink-2);
+    border: 0;
+    padding: 0;
+  }
+  .topbar nav a:hover { color: var(--accent); }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    border-bottom: 1px solid var(--rule);
+  }
+  .hero-inner {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: clamp(3rem, 7vw, 6rem) var(--gutter) clamp(3rem, 6vw, 5rem);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: clamp(1.5rem, 5vw, 4rem);
+    align-items: start;
+  }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 1.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .eyebrow::before {
+    content: "";
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  h1.name {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: clamp(2.4rem, 6.5vw, 4.6rem);
+    letter-spacing: -0.035em;
+    line-height: 0.98;
+    margin: 0 0 1.5rem 0;
+    color: var(--ink);
+  }
+  h1.name .mark {
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  .role-block {
+    max-width: 36rem;
+    font-size: clamp(1.05rem, 1.5vw, 1.18rem);
+    line-height: 1.55;
+    color: var(--ink-2);
+    margin: 0 0 2rem 0;
+  }
+  .role-block strong { color: var(--ink); font-weight: 600; }
+
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.6rem;
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--ink-3);
+    letter-spacing: 0.02em;
+  }
+  .hero-meta span { display: inline-flex; align-items: center; gap: 0.5rem; }
+  .hero-meta .k { color: var(--ink); }
+  .hero-meta .sep { color: var(--rule-2); }
+
+  .portrait-wrap {
+    position: relative;
+    width: clamp(150px, 18vw, 220px);
+    aspect-ratio: 4 / 5;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.85rem;
+  }
+  .portrait {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    border-radius: 4px;
+    object-fit: cover;
+    object-position: 50% 22%;
+    background: var(--bg-2);
+    display: block;
+    box-shadow: 0 1px 0 0 var(--rule-2) inset, 0 0 0 1px var(--rule);
+  }
+  .portrait-caption {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--ink-3);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    line-height: 1;
+  }
+  .portrait-caption::before {
+    content: "";
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 3px rgba(229, 70, 44, 0.18);
+    display: inline-block;
+  }
+
+  /* ---------- Page grid ---------- */
+  .wrap {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: clamp(2rem, 5vw, 4rem) var(--gutter) 5rem;
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: start;
+  }
+  main { min-width: 0; }
+  aside.rail {
+    position: sticky;
+    top: 5rem;
+    min-width: 0;
+    font-size: 0.93rem;
+  }
+
+  /* ---------- Sections ---------- */
+  section { scroll-margin-top: 5rem; }
+  section + section {
+    margin-top: clamp(3rem, 5vw, 4.5rem);
+    padding-top: clamp(2.5rem, 4vw, 3.5rem);
+    border-top: 1px solid var(--rule);
+  }
+
+  .sec-label {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 1.25rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .sec-label::before {
+    content: "";
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    display: inline-block;
+  }
+  .sec-label .num {
+    color: var(--ink);
+    font-weight: 500;
+    margin-right: 0.4rem;
+  }
+
+  h2 {
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: clamp(1.45rem, 2.4vw, 1.85rem);
+    letter-spacing: -0.018em;
+    line-height: 1.15;
+    margin: 0 0 1.4rem 0;
+    color: var(--ink);
+    max-width: 36rem;
+    text-wrap: pretty;
+  }
+
+  h3 {
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 1.02rem;
+    line-height: 1.35;
+    letter-spacing: -0.005em;
+    margin: 0;
+    color: var(--ink);
+  }
+
+  p { margin: 0 0 0.95rem 0; text-wrap: pretty; }
+  p:last-child { margin-bottom: 0; }
+
+  .lede {
+    font-size: clamp(1.02rem, 1.4vw, 1.1rem);
+    line-height: 1.65;
+    color: var(--ink-2);
+    max-width: 36rem;
+  }
+  .lede strong { color: var(--ink); font-weight: 600; }
+
+  /* ---------- Workload Intelligence display ---------- */
+  .wi {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.5rem 2rem;
+    align-items: start;
+  }
+  .wi-display {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+    line-height: 1.02;
+    letter-spacing: -0.028em;
+    color: var(--ink);
+    grid-column: 1 / -1;
+    margin: 0;
+    max-width: 24ch;
+    text-wrap: balance;
+  }
+  .wi-display em {
+    font-style: normal;
+    color: var(--accent);
+    font-weight: 700;
+    position: relative;
+    white-space: nowrap;
+  }
+  .wi-body {
+    grid-column: 1 / -1;
+    max-width: 36rem;
+    font-size: 1rem;
+    color: var(--ink-2);
+    line-height: 1.65;
+  }
+  .wi-body strong { color: var(--ink); font-weight: 600; }
+
+  /* ---------- Research threads ---------- */
+  .threads {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .threads li {
+    display: grid;
+    grid-template-columns: 5rem 1fr;
+    gap: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px dashed var(--rule);
+  }
+  .threads li:first-child { border-top: 0; padding-top: 0; }
+  .threads .t-num {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+    line-height: 1.5;
+  }
+  .threads h3 { margin-bottom: 0.4rem; }
+  .threads p { color: var(--ink-2); font-size: 0.97rem; line-height: 1.6; }
+
+  /* ---------- Publications ---------- */
+  .pubs {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+  }
+  .pubs li {
+    display: grid;
+    grid-template-columns: 5rem 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+  .pubs .venue {
+    font-family: var(--mono);
+    font-size: 0.74rem;
+    color: var(--ink-3);
+    letter-spacing: 0.04em;
+    line-height: 1.5;
+    padding-top: 0.2rem;
+  }
+  .pubs .venue strong { color: var(--ink); font-weight: 500; display: block; }
+  .pubs h3 { margin-bottom: 0.45rem; line-height: 1.3; }
+  .pubs h3 a.pub-title {
+    color: var(--ink);
+    border-bottom: 0;
+    padding-bottom: 0;
+    transition: color 120ms ease;
+  }
+  .pubs h3 a.pub-title:hover,
+  .pubs h3 a.pub-title:focus-visible { color: var(--accent); }
+  .pubs .authors { color: var(--ink-2); font-size: 0.93rem; line-height: 1.55; }
+  .pubs .authors .me { color: var(--ink); font-weight: 600; }
+  .pubs .pub-links {
+    font-family: var(--mono);
+    font-size: 0.74rem;
+    letter-spacing: 0.04em;
+    margin-top: 0.55rem;
+    display: flex;
+    gap: 1rem;
+  }
+  .pubs .pub-links a {
+    color: var(--ink-3);
+    border-bottom: 1px solid var(--rule-2);
+    padding-bottom: 1px;
+  }
+  .pubs .pub-links a:hover, .pubs .pub-links a:focus-visible {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  /* ---------- Industry timeline ---------- */
+  .roles {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.3rem;
+  }
+  .roles li {
+    display: grid;
+    grid-template-columns: 5rem 1fr;
+    gap: 1.5rem;
+    align-items: baseline;
+  }
+  .roles .who {
+    font-family: var(--mono);
+    font-size: 0.74rem;
+    color: var(--ink-3);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding-top: 0.15rem;
+  }
+  .roles h3 { font-weight: 600; }
+  .roles p { color: var(--ink-2); font-size: 0.93rem; margin-top: 0.3rem; line-height: 1.55; }
+
+  /* ---------- Right rail ---------- */
+  .rail-section + .rail-section {
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule);
+  }
+  .rail-label {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 1rem 0;
+  }
+
+  .contact-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    font-family: var(--mono);
+    font-size: 0.86rem;
+  }
+  .contact-list li {
+    display: grid;
+    grid-template-columns: 22px 1fr;
+    gap: 0.85rem;
+    align-items: center;
+  }
+  .contact-list svg.ico {
+    width: 16px;
+    height: 16px;
+    color: var(--ink-3);
+    transition: color 120ms ease;
+  }
+  .contact-list li:hover svg.ico,
+  .contact-list li:focus-within svg.ico { color: var(--accent); }
+  .contact-list a,
+  .email-button {
+    color: var(--ink);
+    border-bottom: 1px solid transparent;
+    padding-bottom: 1px;
+    background: none;
+    font: inherit;
+    border-top: 0; border-left: 0; border-right: 0;
+    cursor: pointer;
+    text-align: left;
+    transition: color 120ms ease, border-color 120ms ease;
+  }
+  .contact-list a:hover, .email-button:hover,
+  .contact-list a:focus-visible, .email-button:focus-visible {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+  .contact-list .static {
+    color: var(--ink);
+  }
+
+  /* Projects list in rail */
+  .proj-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .proj-list li {
+    padding: 0.85rem 0;
+    border-top: 1px solid var(--rule);
+  }
+  .proj-list li:first-child { border-top: 0; padding-top: 0; }
+  .proj-list li:last-child { padding-bottom: 0; }
+  .proj-list a {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    align-items: baseline;
+    border: 0;
+    padding: 0;
+    color: var(--ink);
+  }
+  .proj-list .proj-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--ink);
+  }
+  .proj-list .proj-meta {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--ink-3);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+  .proj-list a:hover .proj-name { color: var(--accent); }
+  .proj-list .desc {
+    color: var(--ink-2);
+    font-size: 0.88rem;
+    line-height: 1.5;
+    margin-top: 0.25rem;
+  }
+  .proj-list .arrow { color: var(--ink-3); font-family: var(--mono); }
+
+  /* Supervision callout in rail */
+  .sup {
+    border-left: 2px solid var(--accent);
+    padding: 0.15rem 0 0.15rem 0.9rem;
+    color: var(--ink-2);
+    font-size: 0.93rem;
+    line-height: 1.55;
+  }
+  .sup strong { color: var(--ink); font-weight: 600; }
+
+  /* ---------- Footer ---------- */
+  footer.colophon {
+    border-top: 1px solid var(--rule);
+    background: var(--bg);
+  }
+  footer .foot-inner {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 1.5rem var(--gutter);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 2rem;
+    justify-content: space-between;
+    color: var(--ink-3);
+    font-size: 0.78rem;
+    font-family: var(--mono);
+    letter-spacing: 0.02em;
+  }
+  footer .foot-inner .right { display: inline-flex; gap: 1.25rem; }
+  footer a { color: var(--ink-3); border-bottom-color: transparent; }
+  footer a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 880px) {
+    .wrap {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+    aside.rail {
+      position: static;
+      margin-top: 3rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--rule);
+    }
+    .threads li, .pubs li, .roles li {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero-inner {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    .portrait-wrap { width: 130px; order: -1; }
+    .topbar nav { display: none; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="topbar-inner">
+      <a class="topbar-mark" href="#top"><span class="dot"></span> JVS</a>
+      <nav aria-label="Sections">
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#industry">Industry</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </div>
+
+  <header class="hero" id="top">
+    <div class="hero-inner">
+      <div>
+        <p class="eyebrow">PhD Student · Cambridge</p>
+        <h1 class="name">Jan&nbsp;Vincent<br/>Szlang<span class="mark">.</span></h1>
+        <p class="role-block">I'm a PhD student at the University of Cambridge, in the Systems Group of the Department of Computer Science and Technology, advised by
+Prof Evangelia Kalyvianaki.
+I work on understanding analytical data processing systems better.</p>
+        <div class="hero-meta">
+          <span class="k">Previously</span>
+          <span>Snowflake</span>
+          <span class="sep">/</span>
+          <span>Huawei&nbsp;UK&nbsp;R&amp;D</span>
+          <span class="sep">/</span>
+          <span>TU&nbsp;Berlin&nbsp;DIMA</span>
+        </div>
+      </div>
+      <div class="portrait-wrap">
+        <img class="portrait" src="portrait.jpg" alt="Portrait of Jan Vincent Szlang" />
+        <span class="portrait-caption">Cambridge / 2026</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap">
+
+    <main>
+
+      <section id="research">
+        <p class="sec-label"><span class="num">01</span> Research</p>
+        <h2 class="wi-display">We build, test, and select analytical engines based on assumptions about what they will actually run. <em>Workload Intelligence</em> replaces those assumptions with evidence.</h2>
+        <p class="wi-body" style="margin-top: 2rem;">
+          I characterise analytical workloads systematically: at the level of the data they touch, the queries that run over it, and the deployments they live in. Grouping those characterisations into recurring types gives the field a shared vocabulary. For researchers, it clarifies which problems are worth working on. For industry, it turns production data into implementation decisions. For practitioners, it grounds OLAP engine choice in evidence.
+        </p>
+
+        <ul class="threads" style="margin-top: 2.5rem;">
+          <li>
+            <span class="t-num">Thread<br/>01</span>
+            <div>
+              <h3>Do our benchmarks still reflect production?</h3>
+              <p>The benchmarks the field leans on were designed before today's production workloads existed. When the benchmark drifts away from what production systems actually do, research optimises for the wrong thing. I work on closing that alignment gap, and on the measurement tools that tell us whether it holds.</p>
+            </div>
+          </li>
+          <li>
+            <span class="t-num">Thread<br/>02</span>
+            <div>
+              <h3>Workloads have fingerprints. Engines should match them.</h3>
+              <p>Different analytical use cases leave fingerprints in the shape of their data and the queries that run over it. Different fingerprints justify different hardware, algorithms, and engines. I study how to characterise different use cases, and how to map their workloads to design decisions.</p>
+            </div>
+          </li>
+          <li>
+            <span class="t-num">Thread<br/>03</span>
+            <div>
+              <h3>A map of the analytical workload space.</h3>
+              <p>Beyond individual case studies, the longer-term goal is a taxonomy: the axes along which analytical workloads differ, the classes that recur in practice, and the optimisation levers each class unlocks.</p>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <section id="publications">
+        <p class="sec-label"><span class="num">02</span> Publications</p>
+        <ul class="pubs">
+          <li>
+            <p class="venue"><strong>PVLDB</strong> 2025</p>
+            <div>
+              <h3><a class="pub-title" href="https://www.vldb.org/pvldb/vol18/p5126-bress.pdf">Workload Insights From the Snowflake Data Cloud: What Do Production Analytic Queries Really Look Like?</a></h3>
+              <p class="authors"><span class="me">Jan Vincent Szlang</span>, Sebastian Breß, Sebastian Cattes, Jonathan Dees, Florian Funke, Max Heimel, Michel Oleynik, Ismail Oukid, Tobias Maltenberger.</p>
+              <p class="pub-links"><a href="https://www.vldb.org/pvldb/vol18/p5126-bress.pdf">PDF ↗</a></p>
+            </div>
+          </li>
+          <li>
+            <p class="venue"><strong>PVLDB</strong> 2025</p>
+            <div>
+              <h3><a class="pub-title" href="https://www.vldb.org/pvldb/vol18/p2468-ziehn.pdf">Unraveling the Impact of Window Semantics: Optimizing Join Order for Efficient Stream Processing</a></h3>
+              <p class="authors">Ariane Ziehn, <span class="me">Jan Vincent Szlang</span>, Steffen Zeuch, Volker Markl.</p>
+              <p class="pub-links"><a href="https://www.vldb.org/pvldb/vol18/p2468-ziehn.pdf">PDF ↗</a></p>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <section id="industry">
+        <p class="sec-label"><span class="num">03</span> Industry</p>
+        <ul class="roles">
+          <li>
+            <span class="who">Snowflake<br/>Berlin</span>
+            <div>
+              <h3>Query Processing Engineer</h3>
+              <p>Built a vectorised expression framework. Co-authored the PVLDB 2025 paper analysing ~600M production BI queries. Profiled performance-critical code down to assembly.</p>
+            </div>
+          </li>
+          <li>
+            <span class="who">Huawei UK<br/>Edinburgh</span>
+            <div>
+              <h3>Senior Engineer, GaussDB</h3>
+              <p>Vectorised execution, in-memory data representation, selection vectors. Drove a 20% improvement on TPC-H through low-level optimisations.</p>
+            </div>
+          </li>
+          <li>
+            <span class="who">TU Berlin<br/>DIMA</span>
+            <div>
+              <h3>Research Assistant, NebulaStream</h3>
+              <p>Designed and implemented the cost-based window-join reordering algorithm published as the PVLDB 2025 window-semantics paper.</p>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+    </main>
+
+    <aside class="rail">
+
+      <section class="rail-section" id="contact">
+        <p class="rail-label">Contact</p>
+        <ul class="contact-list">
+          <li>
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            <button type="button" class="email-button" id="email-reveal" data-u="jvs34" data-d="cam.ac.uk" aria-label="Reveal email">jvs34&nbsp;at&nbsp;cam.ac.uk</button>
+          </li>
+          <li>
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6.5-8 12-8 12s-8-5.5-8-12a8 8 0 1 1 16 0z"/><circle cx="12" cy="10" r="2.8"/></svg>
+            <span class="static">Cambridge, UK</span>
+          </li>
+          <li>
+            <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .8C5.7.8.6 5.9.6 12.2c0 5 3.3 9.3 7.8 10.8.6.1.8-.2.8-.5v-2c-3.2.7-3.8-1.5-3.8-1.5-.5-1.3-1.3-1.6-1.3-1.6-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.7 2.7 1.2 3.3.9.1-.7.4-1.2.7-1.5-2.5-.3-5.2-1.3-5.2-5.6 0-1.2.4-2.3 1.2-3.1-.1-.3-.5-1.4.1-3 0 0 1-.3 3.2 1.2.9-.3 1.9-.4 2.9-.4s2 .1 2.9.4c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.7.1 3 .7.8 1.2 1.9 1.2 3.1 0 4.4-2.7 5.3-5.2 5.6.4.4.8 1 .8 2.1v3.1c0 .3.2.7.8.5 4.5-1.5 7.7-5.7 7.7-10.8C23.4 5.9 18.3.8 12 .8z"/></svg>
+            <a href="https://github.com/szlangini">github.com/szlangini</a>
+          </li>
+          <li>
+            <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1 0 7.5l4.4 2.5v4.6L12 19l7.6-4.4V10L24 7.5 12 1zm0 12.6c-2.5 0-4.5-2-4.5-4.5S9.5 4.6 12 4.6s4.5 2 4.5 4.5-2 4.5-4.5 4.5zM12 21a6.5 6.5 0 0 1-5.5-3l5.5-3 5.5 3A6.5 6.5 0 0 1 12 21z"/></svg>
+            <a href="https://scholar.google.com/citations?user=Du7dAqsAAAAJ">Google Scholar</a>
+          </li>
+          <li>
+            <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.4 20.4h-3.5v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.6H9.4V9h3.4v1.6h.1c.5-.9 1.6-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.5v6.1zM5.3 7.4a2.1 2.1 0 1 1 0-4.1 2.1 2.1 0 0 1 0 4.1zM7.1 20.4H3.6V9h3.5v11.4zM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 .9.8 1.7 1.8 1.7h20.5c1 0 1.8-.8 1.8-1.7V1.7C24 .8 23.2 0 22.2 0z"/></svg>
+            <a href="https://www.linkedin.com/in/jvszlang">linkedin.com/in/jvszlang</a>
+          </li>
+        </ul>
+      </section>
+
+      <section class="rail-section">
+        <p class="rail-label">Projects</p>
+        <ul class="proj-list">
+          <li>
+            <a href="https://github.com/szlangini/WorkloadLens">
+              <span>
+                <span class="proj-name">WorkloadLens</span>
+                <span class="desc">Open-source static analyser for SQL query corpora at production scale.</span>
+              </span>
+              <span class="arrow" aria-hidden="true">↗</span>
+            </a>
+          </li>
+          <li>
+            <div style="display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:baseline;">
+              <span>
+                <span class="proj-name">Prod-DS</span>
+                <span class="desc">A production-aligned extension of TPC-DS.</span>
+              </span>
+              <span class="proj-meta">Submitted</span>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <section class="rail-section">
+        <p class="rail-label">Supervision</p>
+        <p class="sup">
+          Open topics for MPhil / Part III projects. Remote or in person, with a conference paper as the goal. Bring your own idea or pick from mine.<br/><br/>
+          <strong>Industry:</strong> open to research collaborations and internships.
+        </p>
+      </section>
+
+    </aside>
+
+  </div>
+
+  <footer class="colophon">
+    <div class="foot-inner">
+      <span>Dept. of Computer Science &amp; Technology · University of Cambridge</span>
+      <span class="right">
+        <span>© <span id="year">2026</span> J. V. Szlang</span>
+      </span>
+    </div>
+  </footer>
+
+<script>
+  (function () {
+    var btn = document.getElementById('email-reveal');
+    if (!btn) return;
+    var revealed = false;
+    btn.addEventListener('click', function () {
+      var addr = btn.dataset.u + '@' + btn.dataset.d;
+      if (!revealed) { btn.textContent = addr; revealed = true; }
+      window.location.href = 'mailto:' + addr;
+    });
+  })();
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Smooth scroll for top-bar anchors
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var id = a.getAttribute('href').slice(1);
+      var t = document.getElementById(id);
+      if (t) {
+        e.preventDefault();
+        window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - 60, behavior: 'smooth' });
+        history.replaceState(null, '', '#' + id);
+      }
+    });
+  });
+</script>
+</body>
+</html>
